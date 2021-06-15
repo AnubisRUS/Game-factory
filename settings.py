@@ -1,4 +1,4 @@
-#le_epic_window
-le_epic_width = 400
-le_epic_height = 700
-#icons
+weight_window = 1200
+height_window = 700
+weight_mage = 90
+height_mage = 114
