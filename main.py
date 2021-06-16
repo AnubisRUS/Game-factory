@@ -1,17 +1,19 @@
 import pygame
 from settings import *
-from tower import *
 import pygame, sys
 from settings import *
 
 #import sprites
 from buttons import *
+from mage import *
+from tower import *
 
 pygame.init()
 
 #creating window
 screen = pygame.display.set_mode((width_window, height_window))
 clock = pygame.time.Clock()
+player = Mage()
 
 #show menu func
 def mainmenu():
