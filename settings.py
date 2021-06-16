@@ -7,3 +7,4 @@ mage_speed = 1 # скорость стрельбы мага
 mage_repulsion = 0 #сила отталкивания мага
 mage_slowdown = 1 #сила замедления мага
 tower_health = 100 #жизни башни мага
+FPS = 60
