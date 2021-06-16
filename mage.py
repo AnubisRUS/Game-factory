@@ -1,5 +1,6 @@
 #imports
 import pygame
+from Sprites.tower import Tower
 
 #Mage
 class Mage(pygame.sprite.Sprite):
@@ -16,6 +17,7 @@ class Mage(pygame.sprite.Sprite):
         screen = pygame.display.get_surface()
         self.rect.x = 0
         self.rect.y = 0
+        self.attack = 5
 
 #Functions
     def draw(self, screen):
