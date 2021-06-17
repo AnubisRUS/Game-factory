@@ -8,22 +8,25 @@ from mage import *
 from tower import *
 
 pygame.init()
+pygame.mixer.init()
+
 
 #creating window
 screen = pygame.display.set_mode((width_window, height_window))
 clock = pygame.time.Clock()
 
-
+pygame.mixer.music.load('assets/sounds/162385647786772.mp3')
+pygame.mixer.music.play(10)
 #show menu func
 def mainmenu():
     #fonts
-    arial = pygame.font.SysFont("Arial", 72)
+    fnpx = pygame.font.Font("assets/fonts/ancient-modern-tales-font/AncientModernTales-a7Po.ttf", 82)
 
     #sprites
-    game_caption = arial.render("Fall of Darkness", True, (255, 255, 255))
-    playbutton = Button((396, 98), "", (402, 281))
-    tutorialbutton = Button((396, 98), "", (402, 443))
-    exitbutton = Button((238, 81), "", (922, 580))
+    game_caption = fnpx.render("Fall of Darkness", True, (255, 255, 255))
+    playbutton = Button(r"assets/design/playbutton.png", (735, 281))
+    tutorialbutton = Button(r"assets/design/tutorialbutton.png", (735, 443))
+    exitbutton = Button(r"assets/design/exitbutton.png", (735, 580))
 
     running = True
     while running:
@@ -46,7 +49,7 @@ def mainmenu():
                     sys.exit()
 
         #rendering
-        screen.blit(game_caption, (410, 95))
+        screen.blit(game_caption, (700, 95))
         playbutton.draw(screen)
         tutorialbutton.draw(screen)
         exitbutton.draw(screen)
@@ -59,15 +62,16 @@ def mainmenu():
 #start game func
 def startgame():
     # fonts
-    arial = pygame.font.SysFont("Arial", 72)
-    tower = Tower(tower_health)
+    fnpx = pygame.font.Font("assets/fonts/CyrillicPixel7-LPeg.ttf", 35)
     player = Mage(5)
+    tower = Tower(tower_health)
+
 
     #sprites
-    test_text = arial.render("GameFactory", True, (255, 255, 255))
-    history_text_1p = arial.render("Вы волшебник, что пошëл по пути глубокого изучения магии. Из за ваших открытий вас все почетают, но вы настолько углубились в познание чудес магии, что отстроили свою башню на краю континента в глуши. ", True, (255, 255, 255))
-    history_text_2p = arial.render("Однажды утром вы проснулись, заметив скопление маны в одной точке. Это был портал, который вëл в царство тьмы, где живут множество монстров. От туда полезли орды монстров, и все они устремились на вашу башню. ", True, (255, 255, 255))
-    history_text_3p = arial.render("Вы готовы отбиваться от монстров, ведь вы чувствуете, что разгадка тайн магии уже близко. Но вас беспокоит чувство тревоги,  которое исходит из портала. Нет сомнений: там живëт что-то злобное и сильное.", True, (255, 255, 255))
+    test_text = fnpx.render("GameFactory", True, (255, 255, 255))
+    history_text_1p = fnpx.render("Вы волшебник, что пошëл по пути глубокого изучения магии. Из за ваших открытий вас все почетают, но вы настолько углубились в познание чудес магии, что отстроили свою башню на краю континента в глуши. ", True, (255, 255, 255))
+    history_text_2p = fnpx.render("Однажды утром вы проснулись, заметив скопление маны в одной точке. Это был портал, который вëл в царство тьмы, где живут множество монстров. От туда полезли орды монстров, и все они устремились на вашу башню. ", True, (255, 255, 255))
+    history_text_3p = fnpx.render("Вы готовы отбиваться от монстров, ведь вы чувствуете, что разгадка тайн магии уже близко. Но вас беспокоит чувство тревоги,  которое исходит из портала. Нет сомнений: там живëт что-то злобное и сильное.", True, (255, 255, 255))
     running = True
     screen.fill((0, 0, 0))
     screen.blit(test_text, (410, 300))
@@ -95,12 +99,27 @@ def startgame():
 
 def tutorial():
     # fonts
-    arial = pygame.font.SysFont("Arial", 72)
-    backbutton = Button((238, 81), "", (922, 580))
+    fnpx = pygame.font.Font("assets/fonts/CyrillicPixel7-LPeg.ttf", 35)
+    backbutton = Button(r"assets/design/backbutton.png", (760, 580))
     #sprites
-    tutorial_text = arial.render("Рады приветствовать вас в нашей игре fall of darkness.Цель игры - защита башни от наступающих монстров, для этого надо нажимать на (подставить кнопку), но у атаки есть откат. Убивая монстров вы получаете монеты, которые можно потратить на улучшения. Но монстры также будут повышать уровень, а через какое-то количество волн появится босс. Желаем приятно провести время в игре. ", True, (255, 255, 255))
+    tutorial_text1 = fnpx.render("Рады приветствовать вас в нашей игре fall of darkness.", True, (255, 255, 255))
+    tutorial_text2 = fnpx.render("Цель игры - защита башни от наступающих монстров,  ", True, (255, 255, 255))
+    tutorial_text3 = fnpx.render("для этого надо нажимать на пробел, но у атаки есть откат.  ", True,(255, 255, 255))
+    tutorial_text4 = fnpx.render("Убивая монстров вы получаете монеты, которые можно", True,(255, 255, 255))
+    tutorial_text5 = fnpx.render("потратить на улучшения. Но монстры также будут", True,(255, 255, 255))
+    tutorial_text6 = fnpx.render("повышать уровень, а через какое-то ", True,(255, 255, 255))
+    tutorial_text7 = fnpx.render("количество волн появится босс", True,(255, 255, 255))
+    tutorial_text8 = fnpx.render("Желаем приятно провести время в игре.", True, (255, 255, 255))
     screen.fill((0, 0, 0))
-    screen.blit(tutorial_text, (10, 100))
+    screen.blit(tutorial_text1, (20, 280))
+    screen.blit(tutorial_text2, (20, 330))
+    screen.blit(tutorial_text3, (20, 380))
+    screen.blit(tutorial_text4, (20, 430))
+    screen.blit(tutorial_text5, (20, 480))
+    screen.blit(tutorial_text6, (20, 530))
+    screen.blit(tutorial_text7, (20, 580))
+    screen.blit(tutorial_text8, (20, 630))
+
     backbutton.draw(screen)
     running = True
     while running:

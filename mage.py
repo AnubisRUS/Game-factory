@@ -1,12 +1,12 @@
 #imports
 import pygame
-from Sprites.tower import Tower
+from tower import *
 
 #Mage
 class Mage(pygame.sprite.Sprite):
     def __init__(self, spells):
         super().__init__()
-        self.image = pygame.image.load(r"assets\images\mage.png")
+        self.image = pygame.image.load(r"assets\design\mage.png")
         self.rect = self.image.get_rect()
         self.spells = 5
         self.last_shot = pygame.time.get_ticks()
