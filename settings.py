@@ -1,7 +1,5 @@
 width_window = 1200
 height_window = 700
-width_mage = 90
-height_mage = 114
 mage_attack = 5
 mage_cooldown = 1000 # скорость стрельбы мага
 mage_repulsion = 0 #сила отталкивания мага
