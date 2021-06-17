@@ -1,15 +1,17 @@
 import pygame
-from settings import *
 import pygame, sys, time
-
+from settings import *
 #import sprites
-from sprites.buttons import *
+from buttons import *
+from mage import *
+from tower import *
 
 pygame.init()
 
 #creating window
 screen = pygame.display.set_mode((width_window, height_window))
 clock = pygame.time.Clock()
+player = Mage()
 
 #show menu func
 def mainmenu():
@@ -57,15 +59,27 @@ def mainmenu():
 def startgame():
     # fonts
     arial = pygame.font.SysFont("Arial", 72)
+    tower = Tower(tower_health)
 
     #sprites
     test_text = arial.render("GameFactory", True, (255, 255, 255))
-
+    history_text_1p = arial.render("Вы волшебник, что пошëл по пути глубокого изучения магии. Из за ваших открытий вас все почетают, но вы настолько углубились в познание чудес магии, что отстроили свою башню на краю континента в глуши. ", True, (255, 255, 255))
+    history_text_2p = arial.render("Однажды утром вы проснулись, заметив скопление маны в одной точке. Это был портал, который вëл в царство тьмы, где живут множество монстров. От туда полезли орды монстров, и все они устремились на вашу башню. ", True, (255, 255, 255))
+    history_text_3p = arial.render("Вы готовы отбиваться от монстров, ведь вы чувствуете, что разгадка тайн магии уже близко. Но вас беспокоит чувство тревоги,  которое исходит из портала. Нет сомнений: там живëт что-то злобное и сильное.", True, (255, 255, 255))
     running = True
     screen.fill((0, 0, 0))
     screen.blit(test_text, (410, 300))
     pygame.display.update()
     time.sleep(5)
+    screen.blit(history_text_1p, ())
+    pygame.display.update()
+    time.sleep(10)
+    screen.blit(history_text_2p, ())
+    pygame.display.update()
+    time.sleep(10)
+    screen.blit(history_text_3p, ())
+    pygame.display.update()
+    time.sleep(10)
     while running:
         clock.tick(FPS)
         # events
@@ -73,11 +87,8 @@ def startgame():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-
-        # rendering
-        screen.fill((0, 0, 0))
-
         # updates
+        screen.fill((0, 0, 0))
         pygame.display.update()
 
 def tutorial():
