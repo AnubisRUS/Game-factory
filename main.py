@@ -3,13 +3,16 @@ import pygame
 import pygame, sys, time
 from settings import *
 #import sprites
-from buttons import *
-from mage import *
-from tower import *
+from Sprites.buttons import *
+from Sprites.mage import *
+from Sprites.tower import *
+from Sprites.enemy import *
 
 pygame.init()
 pygame.mixer.init()
 
+#Stuff
+Monsters = pygame.sprite.Group()
 
 #creating window
 screen = pygame.display.set_mode((width_window, height_window))
