@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- # строка нужна, чтобы не было ошибки Non-UTF-8 code starting with '\xd1' in file
 import pygame
 import pygame, sys, time
 from settings import *
@@ -11,7 +12,7 @@ pygame.init()
 #creating window
 screen = pygame.display.set_mode((width_window, height_window))
 clock = pygame.time.Clock()
-player = Mage()
+
 
 #show menu func
 def mainmenu():
@@ -60,6 +61,7 @@ def startgame():
     # fonts
     arial = pygame.font.SysFont("Arial", 72)
     tower = Tower(tower_health)
+    player = Mage(5)
 
     #sprites
     test_text = arial.render("GameFactory", True, (255, 255, 255))
@@ -96,9 +98,10 @@ def tutorial():
     arial = pygame.font.SysFont("Arial", 72)
     backbutton = Button((238, 81), "", (922, 580))
     #sprites
-    test_text = arial.render("Tutorial", True, (255, 255, 255))
+    tutorial_text = arial.render("Рады приветствовать вас в нашей игре fall of darkness.Цель игры - защита башни от наступающих монстров, для этого надо нажимать на (подставить кнопку), но у атаки есть откат. Убивая монстров вы получаете монеты, которые можно потратить на улучшения. Но монстры также будут повышать уровень, а через какое-то количество волн появится босс. Желаем приятно провести время в игре. ", True, (255, 255, 255))
     screen.fill((0, 0, 0))
-    screen.blit(test_text, (410, 300))
+    screen.blit(tutorial_text, (10, 100))
+    backbutton.draw(screen)
     running = True
     while running:
 
@@ -111,6 +114,8 @@ def tutorial():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if backbutton.rect.collidepoint(pygame.mouse.get_pos()):
+                    screen.fill((0, 0, 0))
+                    pygame.display.update()
                     mainmenu()
 
         # update
