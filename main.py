@@ -10,6 +10,9 @@ from tower import *
 pygame.init()
 pygame.mixer.init()
 
+#stuff
+Monsters = pygame.sprite.Group() 
+tower = Tower(25)
 
 #creating window
 screen = pygame.display.set_mode((width_window, height_window))
