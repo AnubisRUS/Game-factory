@@ -3,16 +3,13 @@ import pygame
 import pygame, sys, time
 from settings import *
 #import sprites
-from Sprites.buttons import *
-from Sprites.mage import *
-from Sprites.tower import *
-from Sprites.enemy import *
+from buttons import *
+from mage import *
+from tower import *
 
 pygame.init()
 pygame.mixer.init()
 
-#Stuff
-Monsters = pygame.sprite.Group()
 
 #creating window
 screen = pygame.display.set_mode((width_window, height_window))
@@ -65,30 +62,43 @@ def mainmenu():
 #start game func
 def startgame():
     # fonts
-    fnpx = pygame.font.Font("assets/fonts/CyrillicPixel7-LPeg.ttf", 35)
-    player = Mage(5)
+    fnpx = pygame.font.Font("assets/fonts/CyrillicPixel7-LPeg.ttf", 25)
+    player = Mage()
     tower = Tower(tower_health)
 
 
     #sprites
-    test_text = fnpx.render("GameFactory", True, (255, 255, 255))
-    history_text_1p = fnpx.render("Вы волшебник, что пошëл по пути глубокого изучения магии. Из за ваших открытий вас все почетают, но вы настолько углубились в познание чудес магии, что отстроили свою башню на краю континента в глуши. ", True, (255, 255, 255))
-    history_text_2p = fnpx.render("Однажды утром вы проснулись, заметив скопление маны в одной точке. Это был портал, который вëл в царство тьмы, где живут множество монстров. От туда полезли орды монстров, и все они устремились на вашу башню. ", True, (255, 255, 255))
-    history_text_3p = fnpx.render("Вы готовы отбиваться от монстров, ведь вы чувствуете, что разгадка тайн магии уже близко. Но вас беспокоит чувство тревоги,  которое исходит из портала. Нет сомнений: там живëт что-то злобное и сильное.", True, (255, 255, 255))
+    history_text = [fnpx.render("Вы волшебник, что пошел по пути глубокого изучения магии. Из за ваших открытий вас", True, (255, 255, 255)), fnpx.render("все почетают, но вы настолько углубились в познание чудес магии,", True, (255, 255, 255)), fnpx.render("что отстроили свою башню на краю континента в глуши. ", True, (255, 255, 255)),\
+                    fnpx.render("Однажды утром вы проснулись, заметив скопление маны в одной точке. Это был портал,", True, (255, 255, 255)), fnpx.render("который вeл в царство тьмы, где живут множество монстров.", True, (255, 255, 255)), fnpx.render("От туда полезли орды монстров, и все они устремились на вашу башню. ", True, (255, 255, 255)),
+                    fnpx.render("Вы готовы отбиваться от монстров, ведь вы чувствуете, что разгадка тайн магии ", True, (255, 255, 255)), fnpx.render("уже близко.Но вас беспокоит чувство тревоги, которое исходит из портала. ", True, (255, 255, 255)), fnpx.render("Нет сомнений: там живет что-то злобное и сильное.", True, (255, 255, 255))]
     running = True
+    story_mod = True
+    nstory = 0
+    x = 10
+    y = 10
     screen.fill((0, 0, 0))
-    screen.blit(test_text, (410, 300))
+    for i in range(3):
+        screen.blit(history_text[nstory], (x, y))
+        nstory += 1
+        y += 40
     pygame.display.update()
-    time.sleep(5)
-    screen.blit(history_text_1p, ())
-    pygame.display.update()
-    time.sleep(10)
-    screen.blit(history_text_2p, ())
-    pygame.display.update()
-    time.sleep(10)
-    screen.blit(history_text_3p, ())
-    pygame.display.update()
-    time.sleep(10)
+    while story_mod == True:
+        clock.tick(FPS)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                key = pygame.key.get_pressed()
+                if key[pygame.K_SPACE]:
+                    if nstory <= 8:
+                        for i in range(3):
+                            screen.blit(history_text[nstory], (x, y))
+                            pygame.display.update()
+                            nstory += 1
+                            y += 40
+                    else:
+                        story_mod = False
     while running:
         clock.tick(FPS)
         # events
