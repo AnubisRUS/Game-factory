@@ -94,10 +94,11 @@ def startgame():
 def tutorial():
     # fonts
     arial = pygame.font.SysFont("Arial", 72)
-
+    backbutton = Button((238, 81), "", (922, 580))
     #sprites
     test_text = arial.render("Tutorial", True, (255, 255, 255))
-
+    screen.fill((0, 0, 0))
+    screen.blit(test_text, (410, 300))
     running = True
     while running:
 
@@ -108,10 +109,9 @@ def tutorial():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-
-        # rendering
-        screen.fill((0, 0, 0))
-        screen.blit(test_text, (410, 300))
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if backbutton.rect.collidepoint(pygame.mouse.get_pos()):
+                    mainmenu()
 
         # update
         pygame.display.update()
