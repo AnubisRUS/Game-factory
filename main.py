@@ -10,15 +10,13 @@ from tower import *
 pygame.init()
 pygame.mixer.init()
 
-#stuff
-Monsters = pygame.sprite.Group() 
-tower = Tower(25)
 
 #creating window
 screen = pygame.display.set_mode((width_window, height_window))
 clock = pygame.time.Clock()
 
 pygame.mixer.music.load('assets/sounds/162385647786772.mp3')
+pygame.mixer.music.set_volume(voloume_music)
 pygame.mixer.music.play(10)
 #show menu func
 def mainmenu():
