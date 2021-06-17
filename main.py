@@ -2,6 +2,7 @@
 import pygame
 import pygame, sys, time
 from settings import *
+import random
 #import sprites
 from buttons import *
 from mage import *
@@ -17,7 +18,7 @@ clock = pygame.time.Clock()
 
 pygame.mixer.music.load('assets/sounds/162385647786772.mp3')
 pygame.mixer.music.set_volume(voloume_music)
-pygame.mixer.music.play(10)
+pygame.mixer.music.play(1000)
 #show menu func
 def mainmenu():
     #fonts
@@ -63,10 +64,12 @@ def mainmenu():
 #start game func
 def startgame():
     # fonts
+    minmon = 1#минимум монет с моба
+    maxmon = 3
     fnpx = pygame.font.Font("assets/fonts/CyrillicPixel7-LPeg.ttf", 25)
     player = Mage()
     tower = Tower(tower_health)
-
+    Monsters = pygame.sprite.Group()
 
     #sprites
     history_text = [fnpx.render("Вы волшебник, что пошел по пути глубокого изучения магии. Из за ваших открытий вас", True, (255, 255, 255)), fnpx.render("все почетают, но вы настолько углубились в познание чудес магии,", True, (255, 255, 255)), fnpx.render("что отстроили свою башню на краю континента в глуши. ", True, (255, 255, 255)),\
@@ -107,8 +110,19 @@ def startgame():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+        if len(Monsters) < 3:
+            Monster1 = Monster(10, random.randrange(1300, 1900), random.randrange(minmon, maxmon))
+            Monsters.add(Monster1)
+        for monster in Monsters:
+            if pygame.sprite.collide_mask(tower, monster):
+                monster.remove(Monsters)
+                tower.health = tower.health - 1
         # updates
         screen.fill((0, 0, 0))
+        player.draw(screen)
+        tower.draw_tower(screen)
+        Monsters.draw(screen)
+        Monsters.update()
         pygame.display.update()
 
 def tutorial():

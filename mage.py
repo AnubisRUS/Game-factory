@@ -6,7 +6,7 @@ from tower import *
 class Mage(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
-        self.image = pygame.image.load(r"assets\design\mage.png")
+        self.image = pygame.image.load(r"assets/design/mage.png")
         self.rect = self.image.get_rect()
         self.spells = 5
         self.last_shot = pygame.time.get_ticks()
@@ -15,8 +15,8 @@ class Mage(pygame.sprite.Sprite):
         self.slowdown = 1
         fallen_enemies = 0
         screen = pygame.display.get_surface()
-        self.rect.x = 0
-        self.rect.y = 0
+        self.rect.x = 127
+        self.rect.y = 173
         self.attack = 5
 
 #Functions
