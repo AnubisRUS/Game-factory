@@ -1,11 +1,12 @@
 import pygame, sys
 
+
 class Button(pygame.sprite.Sprite):
 
     def __init__(self, size, image="", pos=(0, 0)):
         super().__init__()
 
-        #create button
+        # create button
         self.image = pygame.Surface(size)
         self.image.fill((255, 255, 255))
         self.rect = self.image.get_rect()
