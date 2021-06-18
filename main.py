@@ -3,6 +3,7 @@ import pygame
 import pygame, sys, time
 from settings import *
 import random
+#import sprites
 from buttons import *
 from mage import *
 from tower import *
@@ -66,11 +67,11 @@ def startgame():
     minmon = 1#минимум монет с моба
     maxmon = 3
     fnpx = pygame.font.Font("assets/fonts/CyrillicPixel7-LPeg.ttf", 25)
-
-    # sprites
     player = Mage()
     tower = Tower(tower_health)
     Monsters = pygame.sprite.Group()
+
+    #sprites
     history_text = [fnpx.render("Вы волшебник, что пошел по пути глубокого изучения магии. Из за ваших открытий вас", True, (255, 255, 255)), fnpx.render("все почетают, но вы настолько углубились в познание чудес магии,", True, (255, 255, 255)), fnpx.render("что отстроили свою башню на краю континента в глуши. ", True, (255, 255, 255)),\
                     fnpx.render("Однажды утром вы проснулись, заметив скопление маны в одной точке. Это был портал,", True, (255, 255, 255)), fnpx.render("который вeл в царство тьмы, где живут множество монстров.", True, (255, 255, 255)), fnpx.render("От туда полезли орды монстров, и все они устремились на вашу башню. ", True, (255, 255, 255)),
                     fnpx.render("Вы готовы отбиваться от монстров, ведь вы чувствуете, что разгадка тайн магии ", True, (255, 255, 255)), fnpx.render("уже близко.Но вас беспокоит чувство тревоги, которое исходит из портала. ", True, (255, 255, 255)), fnpx.render("Нет сомнений: там живет что-то злобное и сильное.", True, (255, 255, 255))]
@@ -102,7 +103,7 @@ def startgame():
                             y += 40
                     else:
                         story_mod = False
-    while running:
+    while running and tower.health > 0:
         clock.tick(FPS)
         # events
         for event in pygame.event.get():
@@ -115,14 +116,15 @@ def startgame():
         for monster in Monsters:
             if pygame.sprite.collide_mask(tower, monster):
                 monster.remove(Monsters)
-                tower.health = tower.health - 1
+                tower.health = tower.health - 100
         # updates
-        screen.blit(pygame.image.load(r"assets/design/testbg.png"), (0, 0))
+        screen.fill((0, 0, 0))
         player.draw(screen)
         tower.draw_tower(screen)
         Monsters.draw(screen)
         Monsters.update()
         pygame.display.update()
+
 
 def tutorial():
     # fonts
@@ -170,4 +172,6 @@ def tutorial():
 
 
 #showing menu
+screen.fill((0, 0, 0))
+pygame.display.update()
 mainmenu()

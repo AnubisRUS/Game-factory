@@ -10,7 +10,7 @@ class Monster(pygame.sprite.Sprite):
         self.maxspeed = 3
         self.speed = random.randrange(self.minspeed, self.maxspeed)
         self.cost = cost
-        self.image = pygame.image.load(r"assets/design/UKRAINE.png")
+        self.image = pygame.image.load(r"assets/design/skelet-01.jpeg")
         self.rect = self.image.get_rect()
         screen = pygame.display.get_surface()
         self.rect.x = x
