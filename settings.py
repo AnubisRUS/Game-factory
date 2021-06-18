@@ -1,9 +1,13 @@
 width_window = 1200
 height_window = 700
+mage_repulsion = 0
+mage_slowdown = 1
+mage_spells = 5
 mage_attack = 5
-mage_cooldown = 1000 # скорость стрельбы мага
-mage_repulsion = 0 #сила отталкивания мага
-mage_slowdown = 1 #сила замедления мага
+mage_cooldown = 1000
 tower_health = 100 #жизни башни мага
 FPS = 60
-voloume_music = 0.06
+monster_hp = 15
+boss_hp = 50
+monster_cost = 2
+boss_cost = 8
