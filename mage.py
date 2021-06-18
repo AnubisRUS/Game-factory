@@ -1,7 +1,7 @@
 #imports
 import pygame
 from tower import *
-
+from enemy import *
 #Mage
 class Mage(pygame.sprite.Sprite):
     def __init__(self):
@@ -26,6 +26,11 @@ class Mage(pygame.sprite.Sprite):
     def update(self):
         key = pygame.key.get_pressed()
         now = pygame.time.get_ticks()
+        if key[pygame.K_SPACE]:
+            if key[pygame.K_SPACE] and now - self.last_shot > self.cooldown:
+                enemy.health -= self.attack
+                enemy.rect.x -= self.repulsion
+                self.last_shot = now
 
     def level_up(self):
         self.attack += 2.5

@@ -7,6 +7,8 @@ import random
 from buttons import *
 from mage import *
 from tower import *
+from enemy import *
+from boss import *
 
 pygame.init()
 pygame.mixer.init()
@@ -16,7 +18,7 @@ pygame.mixer.init()
 background = pygame.image.load("assets/design/bestbg.png")
 screen = pygame.display.set_mode((width_window, height_window))
 clock = pygame.time.Clock()
-
+pygame.display.set_caption("Fall of Darkness")
 pygame.mixer.music.load('assets/sounds/162385647786772.mp3')
 pygame.mixer.music.set_volume(voloume_music)
 pygame.mixer.music.play(1000)
