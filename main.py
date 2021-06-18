@@ -107,6 +107,7 @@ def startgame():
                             y += 40
                     else:
                         story_mod = False
+
     while running and tower.health > 0:
         clock.tick(FPS)
         # events
@@ -123,6 +124,13 @@ def startgame():
                 tower.health = tower.health - 50
             if monster_hp == 0:
                 monster.remove(Monsters)
+            now = pygame.time.get_ticks()
+            if event.type == pygame.KEYDOWN:
+                if key[pygame.K_SPACE]:
+                    if now - player.last_shot > player.cooldown:
+                        monster.health -= player.attack
+                        monster.rect.x -= player.repulsion
+                        monster.last_shot = now
         # updates
         screen.blit(background, [0, 0])
         player.draw(screen)

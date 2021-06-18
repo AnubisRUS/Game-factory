@@ -25,13 +25,7 @@ class Mage(pygame.sprite.Sprite):
         screen.blit(self.image, self.rect)
 
     def update(self):
-        key = pygame.key.get_pressed()
-        now = pygame.time.get_ticks()
-        if key[pygame.K_SPACE]:
-            if key[pygame.K_SPACE] and now - self.last_shot > self.cooldown:
-                enemy.health -= self.attack
-                enemy.rect.x -= self.repulsion
-                self.last_shot = now
+        pass
 
     def level_up(self):
         self.attack += 2.5
