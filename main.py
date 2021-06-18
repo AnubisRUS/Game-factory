@@ -13,17 +13,17 @@ pygame.mixer.init()
 
 
 #creating window
-background = pygame.image.load("assets/design/testbg.png")
+background = pygame.image.load("assets/design/bestbg.png")
 screen = pygame.display.set_mode((width_window, height_window))
 clock = pygame.time.Clock()
 
 pygame.mixer.music.load('assets/sounds/162385647786772.mp3')
-pygame.mixer.music.set_volume(45)
+pygame.mixer.music.set_volume(voloume_music)
 pygame.mixer.music.play(1000)
 #show menu func
 def mainmenu():
     #fonts
-    fnpx = pygame.font.Font("assets/fonts/AncientModernTales-a7Po.ttf", 82)
+    fnpx = pygame.font.Font("assets/fonts/ancient-modern-tales-font/AncientModernTales-a7Po.ttf", 82)
 
     #sprites
     game_caption = fnpx.render("Fall of Darkness", True, (255, 255, 255))
@@ -52,6 +52,7 @@ def mainmenu():
                     sys.exit()
 
         #rendering
+        screen.fill((0, 0, 0))
         screen.blit(game_caption, (700, 95))
         playbutton.draw(screen)
         tutorialbutton.draw(screen)
@@ -65,8 +66,8 @@ def mainmenu():
 #start game func
 def startgame():
     # fonts
-    minmon = 1#минимум монет с моба
-    maxmon = 3
+    #минимум монет с моба
+
     fnpx = pygame.font.Font("assets/fonts/CyrillicPixel7-LPeg.ttf", 25)
     player = Mage()
     tower = Tower(tower_health)
@@ -112,11 +113,11 @@ def startgame():
                 pygame.quit()
                 sys.exit()
         if len(Monsters) < 3:
-            Monster1 = Monster(random.randrange(1300, 1900))
+            Monster1 = Monster(monster_hp, random.randrange(1300, 1900), random.randrange(mminmon, mmaxmon))
             Monsters.add(Monster1)
         for monster in Monsters:
             if pygame.sprite.collide_mask(tower, monster):
-                Monster.remove(Monsters)
+                monster.remove(Monsters)
                 tower.health = tower.health - 100
         # updates
         screen.blit(background, [0, 0])
