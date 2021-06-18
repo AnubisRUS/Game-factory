@@ -7,8 +7,6 @@ import random
 from buttons import *
 from mage import *
 from tower import *
-from enemy import *
-from boss import *
 
 pygame.init()
 pygame.mixer.init()
@@ -18,14 +16,14 @@ pygame.mixer.init()
 background = pygame.image.load("assets/design/bestbg.png")
 screen = pygame.display.set_mode((width_window, height_window))
 clock = pygame.time.Clock()
-pygame.display.set_caption("Fall of Darkness")
+
 pygame.mixer.music.load('assets/sounds/162385647786772.mp3')
 pygame.mixer.music.set_volume(voloume_music)
 pygame.mixer.music.play(1000)
 #show menu func
 def mainmenu():
     #fonts
-    fnpx = pygame.font.Font("assets/fonts/ancient-modern-tales-font/AncientModernTales-a7Po.ttf", 82)
+    fnpx = pygame.font.Font("assets/fonts//AncientModernTales-a7Po.ttf", 82)
 
     #sprites
     game_caption = fnpx.render("Fall of Darkness", True, (255, 255, 255))
@@ -121,6 +119,8 @@ def startgame():
             if pygame.sprite.collide_mask(tower, monster):
                 monster.remove(Monsters)
                 tower.health = tower.health - 100
+            if monster_hp == 0:
+                monster.remove(Monsters)
         # updates
         screen.blit(background, [0, 0])
         player.draw(screen)

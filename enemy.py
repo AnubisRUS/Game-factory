@@ -5,11 +5,11 @@ import random
 class Monster(pygame.sprite.Sprite):
     def __init__(self, hp, x, cost):
         super().__init__()
-        self.hp = hp
-        self.minspeed = 1
-        self.maxspeed = 3
+        self.hp = monster_hp
+        self.minspeed = 4
+        self.maxspeed = 6
         self.speed = random.randrange(self.minspeed, self.maxspeed)
-        self.cost = cost
+        self.cost = monster_cost
         self.image = pygame.image.load(r"assets/design/skelet.png")
         self.rect = self.image.get_rect()
         screen = pygame.display.get_surface()

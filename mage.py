@@ -18,6 +18,7 @@ class Mage(pygame.sprite.Sprite):
         self.rect.x = 127
         self.rect.y = 173
         self.attack = 5
+        self.last_shot = pygame.time.get_ticks()
 
 #Functions
     def draw(self, screen):
@@ -36,3 +37,4 @@ class Mage(pygame.sprite.Sprite):
         self.attack += 2.5
         self.cooldown -= 25
         self.repulsion += 0.25
+
