@@ -1,6 +1,8 @@
 #imports
 import pygame
 from tower import *
+from enemy import Monster
+from boss import Boss
 
 #Mage
 class Mage(pygame.sprite.Sprite):
@@ -26,3 +28,11 @@ class Mage(pygame.sprite.Sprite):
     def update(self):
         key = pygame.key.get_pressed()
         now = pygame.time.get_ticks()
+    def level_up(self):
+        self.attack += 2.5
+        self.cooldown -= 25
+        self.repulsion += 0.25
+        monster.cost += 2
+        boss.cost += 12
+        for i in range(10):
+            level_cost += 10 + i
