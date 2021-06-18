@@ -2,6 +2,7 @@
 import pygame
 from tower import *
 from enemy import *
+
 #Mage
 class Mage(pygame.sprite.Sprite):
     def __init__(self):
@@ -18,7 +19,6 @@ class Mage(pygame.sprite.Sprite):
         self.rect.x = 127
         self.rect.y = 173
         self.attack = 5
-        self.last_shot = pygame.time.get_ticks()
 
 #Functions
     def draw(self, screen):
@@ -37,4 +37,3 @@ class Mage(pygame.sprite.Sprite):
         self.attack += 2.5
         self.cooldown -= 25
         self.repulsion += 0.25
-
