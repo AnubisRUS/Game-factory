@@ -9,7 +9,6 @@ class Mage(pygame.sprite.Sprite):
         super().__init__()
         self.image = pygame.image.load(r"assets/design/mage.png")
         self.rect = self.image.get_rect()
-        self.spells = 5
         self.last_shot = pygame.time.get_ticks()
         self.cooldown = 1000
         self.repulsion = 0

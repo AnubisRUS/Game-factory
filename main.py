@@ -122,15 +122,15 @@ def startgame():
             if pygame.sprite.collide_mask(tower, monster):
                 monster.remove(Monsters)
                 tower.health = tower.health - 50
-            if monster_hp == 0:
-                monster.remove(Monsters)
             now = pygame.time.get_ticks()
             if event.type == pygame.KEYDOWN:
                 if key[pygame.K_SPACE]:
                     if now - player.last_shot > player.cooldown:
-                        monster.health -= player.attack
+                        monster.hp -= player.attack
                         monster.rect.x -= player.repulsion
                         monster.last_shot = now
+            if monster.hp <= 0:
+                monster.remove(Monsters)
         # updates
         screen.blit(background, [0, 0])
         player.draw(screen)
