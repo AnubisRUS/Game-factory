@@ -15,7 +15,7 @@ pygame.mixer.init()
 
 
 #creating window
-background = pygame.image.load("assets/design/bestbg.png")
+background = pygame.image.load("assets/design/menubg.png")
 screen = pygame.display.set_mode((width_window, height_window))
 clock = pygame.time.Clock()
 pygame.display.set_caption("Fall of Darkness")
